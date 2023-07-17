@@ -1,0 +1,1008 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .asteriskField {
+        display: none;
+    }
+</style>
+{% load crispy_forms_tags %}
+<style>
+    .form-center1 {
+        margin-bottom: 100px; /* Adjust the value as needed */
+    }
+</style>
+<script>
+    var subjectObject = {
+      " ": {
+
+      },
+      "ANDHRA PRADESH": {
+        "ANANTAPUR": [],
+        "CHITTOOR": [],
+        "CUDDAPAH": [],
+        "EAST GODAVARI": [],
+        "GUNTUR": [],
+        "KRISHNA": [],
+        "KURNOOL": [],
+        "NELLORE": [],
+        "PRAKASAM": [],
+        "SRIKAKULAM": [],
+        "VISHAKAPATNAM": [],
+        "VIZIANAGARAM": [],
+        "WEST GODAVARI": [],
+      },
+      "ARUNACHAL PRADESH": {
+        "ANJAW": [],
+        "CHANGLANG": [],
+        "DIBANG VALLEY": [],
+        "EAST KAMENG": [],
+        "EAST SIANG": [],
+        "KRA DAADI": [],
+        "KURUNG KUMEY": [],
+        "LOHIT": [],
+        "LONGDING": [],
+        "LOWER DIBANG VALLEY": [],
+        "LOWER SUBANSIRI": [],
+        "NAMSAI": [],
+        "PAPUM PARE": [],
+        "SIANG": [],
+        "TAWANG": [],
+        "TIRAP": [],
+        "UPPER SIANG": [],
+        "UPPER SUBANSIRI": [],
+        "WEST KAMENG": [],
+        "WEST SIANG": []
+      },
+      "ASSAM": {
+        "BAKSA": [],
+        "BARPETA": [],
+        "BONGAIGAON": [],
+        "CACHAR": [],
+        "CHIRANG": [],
+        "DARRANG": [],
+        "DHEMAJI": [],
+        "DHUBRI": [],
+        "DIBRUGARH": [],
+        "DIMA HASAO": [],
+        "GOALPARA": [],
+        "GOLAGHAT": [],
+        "HAILAKANDI": [],
+        "JORHAT": [],
+        "KAMRUP M": [],
+        "KAMRUP R": [],
+        "KARBI ANGLONG": [],
+        "KARIMGANJ": [],
+        "KOKRAJHAR": [],
+        "LAKHIMPUR": [],
+        "MARIGAON": [],
+        "NAGAON": [],
+        "NALBARI": [],
+        "SIBSAGAR": [],
+        "SONITPUR": [],
+        "TINSUKIA": [],
+        "UDALGURI": []
+    },
+    "BIHAR": {
+        "ARARIA": [],
+        "ARWAL": [],
+        "AURANGABAD": [],
+        "BANKA": [],
+        "BEGUSARAI": [],
+        "BHAGALPUR": [],
+        "BHOJPUR": [],
+        "BUXAR": [],
+        "DARBHANGA": [],
+        "EAST CHAMPARAN": [],
+        "GAYA": [],
+        "GOPALGANJ": [],
+        "JAMUI": [],
+        "JEHANABAD": [],
+        "KAIMUR BHABUA": [],
+        "KATIHAR": [],
+        "KHAGARIA": [],
+        "KISHANGANJ": [],
+        "LAKHISARAI": [],
+        "MADHEPURA": [],
+        "MADHUBANI": [],
+        "MUNGER": [],
+        "MUZAFFARPUR": [],
+        "NALANDA": [],
+        "NAWADA": [],
+        "PATNA": [],
+        "PURNIA": [],
+        "ROHTAS": [],
+        "SAHARSA": [],
+        "SAMASTIPUR": [],
+        "SARAN": [],
+        "SHEIKHPURA": [],
+        "SHEOHAR": [],
+        "SITAMARHI": [],
+        "SIWAN": [],
+        "SUPAUL": [],
+        "VAISHALI": [],
+        "WEST CHAMPARAN": []
+    },
+    "CHHATTISGARH": {
+        "BALOD": [],
+        "BALODA BAZAR": [],
+        "BALRAMPUR": [],
+        "BAMETARA": [],
+        "BASTAR": [],
+        "BEMETARA": [],
+        "BIJAPUR": [],
+        "BILASPUR": [],
+        "DANTEWADA": [],
+        "DHAMTARI": [],
+        "DURG": [],
+        "GARIABAND": [],
+        "JANJGIR CHAMPA": [],
+        "JASHPUR": [],
+        "KABIRDHAM": [],
+        "KANKER": [],
+        "KONDAGAON": [],
+        "KORBA": [],
+        "KOREA": [],
+        "MAHASAMUND": [],
+        "MUNGELI": [],
+        "NARAYANPUR": [],
+        "RAIGARH": [],
+        "RAIPUR": [],
+        "RAJNANDGAON": [],
+        "SUKMA": [],
+        "SURAJPUR": [],
+        "SURGUJA": []
+    },
+    "GOA": {
+        "NORTH GOA": [],
+        "SOUTH GOA": []
+    },
+    "GUJARAT": {
+        "AHMEDABAD": [],
+        "AMRELI": [],
+        "ANAND": [],
+        "ARAVALLI": [],
+        "BANASKANTHA": [],
+        "BARDOLI": [],
+        "BHARUCH": [],
+        "BHAVNAGAR": [],
+        "BOTAD": [],
+        "CHHOTA UDAIPUR": [],
+        "Dahod": [],
+        "DANDELI": [],
+        "DANG": [],
+        "DEVBHUMI DWARKA": [],
+        "GANDHINAGAR": [],
+        "GIR SOMNATH": [],
+        "JAMNAGAR": [],
+        "JUNAGADH": [],
+        "KACHCHH": [],
+        "KHEDA": [],
+        "MAHESANA": [],
+        "Mahisagar": [],
+        "MORBI": [],
+        "NARMADA": [],
+        "NAVSARI": [],
+        "PANCHMAHAL": [],
+        "PATAN": [],
+        "PORBANDAR": [],
+        "RAJKOT": [],
+        "SABARKANTHA": [],
+        "SURAT": [],
+        "SURENDRANAGAR": [],
+        "TAPI": [],
+        "VADODARA": [],
+        "VALSAD": []
+    },
+    "HARYANA": {
+        "AMBALA": [],
+        "BHIWANI": [],
+        "CHARKHI DADRI": [],
+        "FARIDABAD": [],
+        "FATEHABAD": [],
+        "GURUGRAM": [],
+        "HISAR": [],
+        "JHAJJAR": [],
+        "JIND": [],
+        "KAITHAL": [],
+        "KARNAL": [],
+        "KURUKSHETRA": [],
+        "MAHENDRAGARH": [],
+        "NUH": [],
+        "PALWAL": [],
+        "PANCHKULA": [],
+        "PANIPAT": [],
+        "REWARI": [],
+        "ROHTAK": [],
+        "SIRSA": [],
+        "SONEPAT": [],
+        "YAMUNANAGAR": []
+    },
+    "HIMANCHAL PRADESH": {
+        "BILASPUR": [],
+        "CHAMBA": [],
+        "HAMIRPUR": [],
+        "KANGRA": [],
+        "KINNAUR": [],
+        "KULLU": [],
+        "LAHUL AND SPITI": [],
+        "MANDI": [],
+        "SHIMLA": [],
+        "SIRMAUR": [],
+        "SOLAN": [],
+        "UNA": []
+    },
+    "JAMMU AND KASHMIR": {
+        "ANANTNAG": [],
+        "BANDIPORA": [],
+        "BARAMULLA": [],
+        "BUDGAM": [],
+        "DODA": [],
+        "GANDERBAL": [],
+        "JAMMU": [],
+        "KARGIL": [],
+        "KATHUA": [],
+        "KISHTWAR": [],
+        "KULGAM": [],
+        "KUPWARA": [],
+        "LEH": [],
+        "POONCH": [],
+        "PULWAMA": [],
+        "RAJAURI": [],
+        "RAMBAN": [],
+        "REASI": [],
+        "SAMBA": [],
+        "SHOPIAN": [],
+        "SRINAGAR": [],
+        "UDHAMPUR": []
+    },
+    "JHARKHAND": {
+        "BOKARO": [],
+        "CHATRA": [],
+        "DEOGHAR": [],
+        "DHANBAD": [],
+        "DUMKA": [],
+        "EAST SINGHBHUM": [],
+        "GARHWA": [],
+        "GIRIDIH": [],
+        "GODDA": [],
+        "GUMLA": [],
+        "HAZARIBAGH": [],
+        "JAMTARA": [],
+        "KHUNTI": [],
+        "KODERMA": [],
+        "LATEHAR": [],
+        "LOHARDAGA": [],
+        "PAKUR": [],
+        "PALAMU": [],
+        "RAMGARH": [],
+        "RANCHI": [],
+        "SAHEBGANJ": [],
+        "SARAIKELA KHARSAWAN": [],
+        "SIMDEGA": [],
+        "WEST SINGHBHUM": []
+    },
+    "KARNATAKA": {
+        "BAGALKOTE": [],
+        "BALLARI": [],
+        "BELAGAVI": [],
+        "BENGALURU RURAL": [],
+        "BENGALURU URBAN": [],
+        "BIDAR": [],
+        "CHAMARAJANAGAR": [],
+        "CHIKBALLAPUR": [],
+        "CHIKKAMAGALURU": [],
+        "CHITRADURGA": [],
+        "DAKSHINA KANNADA": [],
+        "DAVANAGERE": [],
+        "DHARWAD": [],
+        "GADAG": [],
+        "HASSAN": [],
+        "HAVERI": [],
+        "KALABURAGI": [],
+        "KODAGU": [],
+        "KOLAR": [],
+        "KOPPAL": [],
+        "MANDYA": [],
+        "MYSURU": [],
+        "RAICHUR": [],
+        "RAMANAGARA": [],
+        "SHIVAMOGGA": [],
+        "TUMAKURU": [],
+        "UDUPI": [],
+        "UTTARA KANNADA": [],
+        "VIJAYAPURA": [],
+        "YADGIR": []
+    },
+    "KERALA": {
+        "ALAPPUZHA": [],
+        "ERNAKULAM": [],
+        "IDUKKI": [],
+        "KANNUR": [],
+        "KASARAGOD": [],
+        "KOLLAM": [],
+        "KOTTAYAM": [],
+        "KOZHIKODE": [],
+        "MALAPPURAM": [],
+        "PALAKKAD": [],
+        "PATHANAMTHITTA": [],
+        "THIRUVANANTHAPURAM": [],
+        "THRISSUR": [],
+        "WAYANAD": []
+    },
+    "MADHYA PRADESH": {
+        "AGAR MALWA": [],
+        "ALIRAJPUR": [],
+        "ANUPPUR": [],
+        "ASHOKNAGAR": [],
+        "BALAGHAT": [],
+        "BARWANI": [],
+        "BETUL": [],
+        "BHIND": [],
+        "BHOPAL": [],
+        "BURHANPUR": [],
+        "CHHATARPUR": [],
+        "CHHINDWARA": [],
+        "DAMOH": [],
+        "DATIA": [],
+        "DEWAS": [],
+        "DHAR": [],
+        "DINDORI": [],
+        "GUNA": [],
+        "GWALIOR": [],
+        "HARDA": [],
+        "HOSHANGABAD": [],
+        "INDORE": [],
+        "JABALPUR": [],
+        "JHABUA": [],
+        "KATNI": [],
+        "KHANDWA": [],
+        "KHARGONE": [],
+        "MANDLA": [],
+        "MANDSAUR": [],
+        "MORENA": [],
+        "NARSINGHPUR": [],
+        "NEEMUCH": [],
+        "PANNA": [],
+        "RAISEN": [],
+        "RAJGARH": [],
+        "RATLAM": [],
+        "REWA": [],
+        "SAGAR": [],
+        "SATNA": [],
+        "SEHORE": [],
+        "SEONI": [],
+        "SHAHDOL": [],
+        "SHAJAPUR": [],
+        "SHEOPUR": [],
+        "SHIVPURI": [],
+        "SIDHI": [],
+        "SINGRAULI": [],
+        "TIKAMGARH": [],
+        "UJJAIN": [],
+        "UMARIA": [],
+        "VIDISHA": []
+    },
+    "MAHARASHTRA": {
+        "AHMEDNAGAR": [],
+        "AKOLA": [],
+        "AMRAVATI": [],
+        "AURANGABAD": [],
+        "BEED": [],
+        "BHANDARA": [],
+        "BULDHANA": [],
+        "CHANDRAPUR": [],
+        "DHULE": [],
+        "GADCHIROLI": [],
+        "GONDIA": [],
+        "HINGOLI": [],
+        "JALGAON": [],
+        "JALNA": [],
+        "KOLHAPUR": [],
+        "LATUR": [],
+        "MUMBAI CITY": [],
+        "MUMBAI SUBURBAN": [],
+        "NAGPUR": [],
+        "NANDED": [],
+        "NANDURBAR": [],
+        "NASHIK": [],
+        "OSMANABAD": [],
+        "PALGHAR": [],
+        "PARBHANI": [],
+        "PUNE": [],
+        "RAIGAD": [],
+        "RATNAGIRI": [],
+        "SANGLI": [],
+        "SATARA": [],
+        "SINDHUDURG": [],
+        "SOLAPUR": [],
+        "THANE": [],
+        "WARDHA": [],
+        "WASHIM": [],
+        "YAVATMAL": []
+    },
+    "MANIPUR": {
+        "BISHNUPUR": [],
+        "CHANDEL": [],
+        "CHURACHANDPUR": [],
+        "IMPHAL EAST": [],
+        "IMPHAL WEST": [],
+        "JIRIBAM": [],
+        "KAKCHING": [],
+        "KAMJONG": [],
+        "KANGPOKPI": [],
+        "NONEY": [],
+        "PHERZAWL": [],
+        "SENAPATI": [],
+        "TAMENGLONG": [],
+        "TENGNOUPAL": [],
+        "THOUBAL": [],
+        "UJKHRUL": []
+    },
+    "MEGHALAYA": {
+        "EAST GARO HILLS": [],
+        "EAST JAINTIA HILLS": [],
+        "EAST KHASI HILLS": [],
+        "NORTH GARO HILLS": [],
+        "RI BHOI": [],
+        "SOUTH GARO HILLS": [],
+        "SOUTH WEST GARO HILLS": [],
+        "SOUTH WEST KHASI HILLS": [],
+        "WEST GARO HILLS": [],
+        "WEST JAINTIA HILLS": [],
+        "WEST KHASI HILLS": []
+    },
+    "MIZORAM": {
+        "AIZAWL": [],
+        "CHAMPHAI": [],
+        "HNAHTHIAL": [],
+        "KHAWZAWL": [],
+        "KOLASIB": [],
+        "LAWNGTLAI": [],
+        "LUNGLEI": [],
+        "MAMIT": [],
+        "SAIHA": [],
+        "SERCHHIP": [],
+        "SIAHA": []
+    },
+    "NAGALAND": {
+        "DIMAPUR": [],
+        "KIPHIRE": [],
+        "KOHIMA": [],
+        "LONGLENG": [],
+        "MOKOKCHUNG": [],
+        "MON": [],
+        "PEREN": [],
+        "PHEK": [],
+        "TUENSANG": [],
+        "WOKHA": [],
+        "ZUNHEBOTO": []
+    },
+    "ODISHA": {
+        "ANGUL": [],
+        "BALANGIR": [],
+        "BALESHWAR": [],
+        "BARGARH": [],
+        "BHADRAK": [],
+        "BOUDH": [],
+        "CUTTACK": [],
+        "DEOGARH": [],
+        "DHENKANAL": [],
+        "GAJAPATI": [],
+        "GANJAM": [],
+        "JAGATSINGHAPUR": [],
+        "JAJAPUR": [],
+        "JHARSUGUDA": [],
+        "KALAHANDI": [],
+        "KANDHAMAL": [],
+        "KENDRAPARA": [],
+        "KENDUJHAR": [],
+        "KHORDHA": [],
+        "KORAPUT": [],
+        "MALKANGIRI": [],
+        "MAYURBHANJ": [],
+        "NABARANGPUR": [],
+        "NAYAGARH": [],
+        "NUAPADA": [],
+        "PURI": [],
+        "RAYAGADA": [],
+        "SAMBALPUR": [],
+        "SONEPUR": [],
+        "SUNDARGARH": []
+    },
+    "PUNJAB": {
+        "AMRITSAR": [],
+        "BARNALA": [],
+        "BATHINDA": [],
+        "FARIDKOT": [],
+        "FATEHGARH SAHIB": [],
+        "FIROZPUR": [],
+        "GURDASPUR": [],
+        "HOSHIARPUR": [],
+        "JALANDHAR": [],
+        "KAPURTHALA": [],
+        "LUDHIANA": [],
+        "MANSA": [],
+        "MOGA": [],
+        "MUKTSAR": [],
+        "PATHANKOT": [],
+        "PATIALA": [],
+        "RUPNAGAR": [],
+        "SAHIBZADA AJIT SINGH NAGAR": [],
+        "SANGRUR": [],
+        "SHAHEED BHAGAT SINGH NAGAR": [],
+        "SRI MUKTSAR SAHIB": [],
+        "TARN TARAN": []
+    },
+    "RAJASTHAN": {
+        "AJMER": [],
+        "ALWAR": [],
+        "BANSWARA": [],
+        "BARAN": [],
+        "BARMER": [],
+        "BHARATPUR": [],
+        "BHILWARA": [],
+        "BIKANER": [],
+        "BUNDI": [],
+        "CHITTORGARH": [],
+        "CHURU": [],
+        "DAUSA": [],
+        "DHOLPUR": [],
+        "DUNGARPUR": [],
+        "HANUMANGARH": [],
+        "JAIPUR": [],
+        "JAISALMER": [],
+        "JALORE": [],
+        "JHALAWAR": [],
+        "JHUNJHUNU": [],
+        "JODHPUR": [],
+        "KARAULI": [],
+        "KOTA": [],
+        "NAGAUR": [],
+        "PALI": [],
+        "PRATAPGARH": [],
+        "RAJSAMAND": [],
+        "SAWAI MADHOPUR": [],
+        "SIKAR": [],
+        "SIROHI": [],
+        "SRIGANGANAGAR": [],
+        "TONK": [],
+        "UDAIPUR": []
+    },
+    "SIKKIM": {
+        "EAST SIKKIM": [],
+        "NORTH SIKKIM": [],
+        "SOUTH SIKKIM": [],
+        "WEST SIKKIM": []
+    },
+    "TAMIL NADU": {
+        "ARIYALUR": [],
+        "CHENGALPATTU": [],
+        "CHENNAI": [],
+        "COIMBATORE": [],
+        "CUDDALORE": [],
+        "DHARMAPURI": [],
+        "DINDIGUL": [],
+        "ERODE": [],
+        "KALLAKURICHI": [],
+        "KANCHIPURAM": [],
+        "KANNIYAKUMARI": [],
+        "KARUR": [],
+        "KRISHNAGIRI": [],
+        "MADURAI": [],
+        "NAGAPATTINAM": [],
+        "NAMAKKAL": [],
+        "PERAMBALUR": [],
+        "PUDUKKOTTAI": [],
+        "RAMANATHAPURAM": [],
+        "RANIPET": [],
+        "SALEM": [],
+        "SIVAGANGA": [],
+        "TENKASI": [],
+        "THANJAVUR": [],
+        "THE NILGIRIS": [],
+        "THENI": [],
+        "THIRUCHIRAPPALLI": [],
+        "THIRUNELVELI": [],
+        "THIRUVALLUR": [],
+        "THIRUVARUR": [],
+        "TIRUPATHUR": [],
+        "TIRUPPUR": [],
+        "TIRUVANNAMALAI": [],
+        "TUTICORIN": [],
+        "VELLORE": [],
+        "VILLUPURAM": [],
+        "VIRUDHUNAGAR": []
+    },
+    "TELANGANA": {
+        "ADILABAD": [],
+        "BHADRADRI KOTHAGUDEM": [],
+        "HYDERABAD": [],
+        "JAGTIAL": [],
+        "JANGAON": [],
+        "JAYASHANKAR BHUPALPALLY": [],
+        "JOGULAMBA GADWAL": [],
+        "KAMAREDDY": [],
+        "KARIMNAGAR": [],
+        "KHAMMAM": [],
+        "KOMARAM BHEEM ASIFABAD": [],
+        "MAHABUBABAD": [],
+        "MAHABUBNAGAR": [],
+        "MANCHERIAL": [],
+        "MEDAK": [],
+        "MEDCHAL-MALKAJGIRI": [],
+        "NAGARKURNOOL": [],
+        "NALGONDA": [],
+        "NIRMAL": [],
+        "NIZAMABAD": [],
+        "PEDDAPALLI": [],
+        "RAJANNA SIRCILLA": [],
+        "RANGA REDDY": [],
+        "SANGAREDDY": [],
+        "SIDDIPET": [],
+        "SURYAPET": [],
+        "VIKARABAD": [],
+        "WANAPARTHY": [],
+        "WARANGAL RURAL": [],
+        "WARANGAL URBAN": [],
+        "YADADRI BHUVANAGIRI": []
+    },
+    "TRIPURA": {
+        "DHALAI": [],
+        "GOMATI": [],
+        "KHOWAI": [],
+        "NORTH TRIPURA": [],
+        "SEPAHIJALA": [],
+        "SOUTH TRIPURA": [],
+        "UNAKOTI": [],
+        "WEST TRIPURA": []
+    },
+    "UTTAR PRADESH": {
+        "AGRA": [],
+        "ALIGARH": [],
+        "ALLAHABAD": [],
+        "AMBEDKAR NAGAR": [],
+        "AMETHI": [],
+        "AMROHA": [],
+        "AURAIYA": [],
+        "AZAMGARH": [],
+        "BADAUN": [],
+        "BAGHPAT": [],
+        "BAHRAICH": [],
+        "BALLIA": [],
+        "BALRAMPUR": [],
+        "BANDA": [],
+        "BARABANKI": [],
+        "BAREILLY": [],
+        "BASTI": [],
+        "BIJNOR": [],
+        "BUDAUN": [],
+        "BULANDSHAHR": [],
+        "CHANDAULI": [],
+        "CHITRAKOOT": [],
+        "DEORIA": [],
+        "ETAH": [],
+        "ETAWAH": [],
+        "FAIZABAD": [],
+        "FARRUKHABAD": [],
+        "FATEHPUR": [],
+        "FIROZABAD": [],
+        "GAUTAM BUDDHA NAGAR": [],
+        "GHAZIABAD": [],
+        "GHAZIPUR": [],
+        "GONDA": [],
+        "GORAKHPUR": [],
+        "HAMIRPUR": [],
+        "HAPUR": [],
+        "HARDOI": [],
+        "HATHRAS": [],
+        "JALAUN": [],
+        "JAUNPUR": [],
+        "JHANSI": [],
+        "KANNAUJ": [],
+        "KANPUR DEHAT": [],
+        "KANPUR NAGAR": [],
+        "KASGANJ": [],
+        "KAUSHAMBI": [],
+        "KHERI": [],
+        "KUSHI NAGAR": [],
+        "LALITPUR": [],
+        "LUCKNOW": [],
+        "MAHARAJGANJ": [],
+        "MAHOBA": [],
+        "MAINPURI": [],
+        "MATHURA": [],
+        "MAU": [],
+        "MEERUT": [],
+        "MIRZAPUR": [],
+        "MORADABAD": [],
+        "MUZAFFARNAGAR": [],
+        "PILIBHIT": [],
+        "PRATAPGARH": [],
+        "RAE BARELI": [],
+        "RAMPUR": [],
+        "SAHARANPUR": [],
+        "SAMBHAL": [],
+        "SANT KABIR NAGAR": [],
+        "SANT RAVIDAS NAGAR": [],
+        "SHAHJAHANPUR": [],
+        "SHAMLI": [],
+        "SHRAVASTI": [],
+        "SIDDHARTHNAGAR": [],
+        "SITAPUR": [],
+        "SONBHADRA": [],
+        "SULTANPUR": [],
+        "UNNAO": [],
+        "VARANASI": []
+    },
+    "UTTARAKHAND": {
+        "ALMORA": [],
+        "BAGESHWAR": [],
+        "CHAMOLI": [],
+        "CHAMPAWAT": [],
+        "DEHRADUN": [],
+        "HARIDWAR": [],
+        "NAINITAL": [],
+        "PAURI GARHWAL": [],
+        "PITHORAGARH": [],
+        "RUDRA PRAYAG": [],
+        "TEHRI GARHWAL": [],
+        "UDHAM SINGH NAGAR": [],
+        "UTTARKASHI": []
+    },
+    "WEST BENGAL": {
+        "ALIPURDUAR": [],
+        "BANKURA": [],
+        "BIRBHUM": [],
+        "COOCH BEHAR": [],
+        "DARJEELING": [],
+        "DINAJPUR DAKSHIN": [],
+        "DINAJPUR UTTAR": [],
+        "HOOGHLY": [],
+        "HOWRAH": [],
+        "JALPAIGURI": [],
+        "KALIMPONG": [],
+        "KOLKATA": [],
+        "MALDAH": [],
+        "MEDINIPUR EAST": [],
+        "MEDINIPUR WEST": [],
+        "MURSHIDABAD": [],
+        "NADIA": [],
+        "PURULIA": [],
+        "24 PARAGANAS NORTH": [],
+        "24 PARAGANAS SOUTH": [],
+        "ULUBERIA": []
+    },
+    "ANDAMAN AND NICOBAR ISLANDS": {
+        "NORTH AND MIDDLE ANDAMAN": [],
+        "SOUTH ANDAMANS": [],
+        "NICOBAR": []
+    },
+    "CHANDIGARH": {
+        "CHANDIGARH": []
+    },
+    "DADRA AND NAGAR HAVELI": {
+        "DADRA AND NAGAR HAVELI": []
+    },
+    "DAMAN AND DIU": {
+        "DAMAN": [],
+        "DIU": []
+    },
+    "NEW DELHI": {
+        "CENTRAL DELHI": [],
+        "EAST DELHI": [],
+        "NEW DELHI": [],
+        "NORTH DELHI": [],
+        "NORTH EAST DELHI": [],
+        "NORTH WEST DELHI": [],
+        "SHAHDARA": [],
+        "SOUTH DELHI": [],
+        "SOUTH EAST DELHI": [],
+        "SOUTH WEST DELHI": [],
+        "WEST DELHI": []
+    },
+    "LAKSHADWEEP": {
+        "LAKSHADWEEP": []
+    },
+    "PUDUCHERRY": {
+        "KARAIKAL": [],
+        "MAHE": [],
+        "PUDUCHERRY": [],
+        "YANAM": []
+    }
+
+    }
+    var desigObject = {
+      " ": {
+
+      },
+      "Chairman / President": {
+        "ANANTAPUR": [],
+      },
+      "Vice Chairman / Vice President": {
+        "ANJAW": [],
+      },
+      "Managing Director / CEO": {
+        "ANJAW": [],
+      },
+      "Co-Opted Director": {
+        "ANJAW": [],
+      },
+    }
+    
+    var socObject = {
+      " ": {
+
+      },
+      "Agro": {
+        "ANANTAPUR": [],
+      },
+      "Construction": {
+        "ANJAW": [],
+      },
+      "Consumer": {
+        "ANJAW": [],
+      },
+      "Cooperative Bank": {
+        "ANJAW": [],
+      },
+      "Credit": {
+        "ANJAW": [],
+      },
+      "Dairy": {
+        "ANJAW": [],
+      },
+      "Export": {
+        "ANJAW": [],
+      },
+      "Federation": {
+        "ANJAW": [],
+      },
+      "Fisheries": {
+        "ANJAW": [],
+      },
+      "Health/Hospital": {
+        "ANJAW": [],
+      },
+      "Housing": {
+        "ANJAW": [],
+      },
+      "Industrial/Textile": {
+        "ANJAW": [],
+      },
+      "Labour": {
+        "ANJAW": [],
+      },
+      "Marketing": {
+        "ANJAW": [],
+      },
+      "Multi Purpose": {
+        "ANJAW": [],
+      },
+      "National Federation": {
+        "ANJAW": [],
+      },
+      "Organic": {
+        "ANJAW": [],
+      },
+      "Others": {
+        "ANJAW": [],
+      },
+      "Seed": {
+        "ANJAW": [],
+      },
+      "Technical": {
+        "ANJAW": [],
+      },
+      "Tourism": {
+        "ANJAW": [],
+      },
+      "Transport": {
+        "ANJAW": [],
+      },
+      "Welfare": {
+        "ANJAW": [],
+      }
+    }
+
+    window.onload = function() {
+      var courseSel = document.getElementById("id_state");
+      var typeSel = document.getElementById("id_district");
+      var desig = document.getElementById("id_designation");
+      var soc = document.getElementById("id_startup_type");
+      for (var x in subjectObject) {
+        courseSel.options[courseSel.options.length] = new Option(x, x);
+      }
+      for (var x in desigObject) {
+        desig.options[desig.options.length] = new Option(x, x);
+      }
+      for (var x in socObject) {
+        soc.options[soc.options.length] = new Option(x, x);
+      }
+      courseSel.onchange = function() {
+        // Empty Type dropdown
+        typeSel.length = 1;
+        // Display correct values
+        for (var y in subjectObject[this.value]) {
+          typeSel.options[typeSel.options.length] = new Option(y, y);
+        }
+      }
+    }
+    </script>
+<div class="form-center1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-14">
+                <div class="card p-4">
+                    <h4 class="card-title font-weight-bold text-center">Register Profile</h4>
+                    <hr>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                  {{ form.startup_name|as_crispy_field }}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.officer_authorized|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.designation|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.state|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.district|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.startup_type|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.registered_address|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.area_of_operation|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.pan_no|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.tan_no|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    {{ form.service_tax_no|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form.phone|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6">
+                                  <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+                              </div>
+                              <div class="col-md-6 text-right">
+                                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                              </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

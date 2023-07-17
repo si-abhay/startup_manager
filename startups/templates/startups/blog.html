@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Blog - Tempo Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/assets/img/favicon.png" rel="icon">
+  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <style>
+    .message-dialog {
+        position: absolute;
+        left: 30px;
+        top: 90px;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/boxicons/css/boxicons.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/glightbox/css/glightbox.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/remixicon/remixicon.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/swiper/swiper-bundle.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/css/style.css' %}">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-inner-pages">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="{% url 'home' %}">SE PROJECT</a></h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a class="nav-link scrollto " href="{% url 'home' %}">Home</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'blog' %}">Blogs</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'info' %}">Startups</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'grievances' %}">Grievances</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a class="nav-link scrollto " href="{% url 'home' %}">Home</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'blog' %}">Blogs</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'info' %}">Startups</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'grievances' %}">Grievances</a></li>
+                <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                      <li><a href="{% url 'login' %}">User Login</a></li>
+                 
+                      <li><a href="{% url 'admin:index' %}">Admin Login</a></li>
+                    
+                    </ul>
+                  </li>
+                <li><a class="nav-link scrollto " href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>Blog</li>
+        </ol>
+        <h2>Blog</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+            <div class="col-lg-8 entries">
+                
+                    {% for post in blog_posts %}
+                    <article class="entry">
+                    <h2 class="entry-title">
+                        <a href="#">{{ post.title }}</a>
+                    </h2>
+
+                    <div class="entry-meta">
+                        <ul>
+                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ post.author }}</a></li>
+                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="{{ post.date }}">{{ post.date }}</time></a></li>
+                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">{{ post.comments }} Comments</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-content">
+                        <p>
+                        {{ post.content }}
+                        </p>
+                        <div class="read-more">
+                        <a href="#">Read More</a>
+                        </div>
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-folder"></i> <a href="{% url 'category' post.category.id %}">{{ post.category.name }}</a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-tags"></i> {% for tag in post.tags.all %}<a href="{% url 'tag' tag.id %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article><!-- End blog entry -->
+                    {% endfor %}
+
+                
+        
+                <!-- Pagination -->
+                <div class="blog-pagination">
+                    <ul class="justify-content-center">
+                    {% if blog_posts.has_previous %}
+                        <li><a href="?page=1">First</a></li>
+                        <li><a href="?page={{ blog_posts.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+                    {% for num in blog_posts.paginator.page_range %}
+                        {% if blog_posts.number == num %}
+                        <li class="active"><a href="?page={{ num }}">{{ num }}</a></li>
+                        {% else %}
+                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if blog_posts.has_next %}
+                        <li><a href="?page={{ blog_posts.next_page_number }}">Next</a></li>
+                        <li><a href="?page={{ blog_posts.paginator.num_pages }}">Last</a></li>
+                    {% endif %}
+                    </ul>
+                </div><!-- End blog-pagination -->
+
+                </div><!-- End blog entries list -->
+
+            <div class="col-lg-4">
+
+                <div class="sidebar">
+
+                    <h3 class="sidebar-title">Search</h3>
+                    <div class="sidebar-item search-form">
+                        <form action="{% url 'blog' %}" method="GET">
+                            <input type="text" name="q" placeholder="Search...">
+                            <button type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                    </div><!-- End sidebar search formn-->
+
+                    <h3 class="sidebar-title">Categories</h3>
+                    <div class="sidebar-item categories">
+                    <ul>
+                        {% for category in categories %}
+                             <li><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    </div><!-- End sidebar categories-->
+
+                    <h3 class="sidebar-title">Recent Posts</h3>
+                    <div class="sidebar-item recent-posts">
+                        {% for post in blog_posts %}
+                        {% if forloop.counter <= 2 %}
+                        <div class="post-item clearfix">
+                            <!-- Remove the image tag since photos are not needed -->
+                            <h4><a href="#">{{ post.title }}</a></h4>
+                            <time datetime="{{ recent_post.date }}">{{ post.date }}</time>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div><!-- End sidebar recent posts-->
+
+                    <h3 class="sidebar-title">Tags</h3>
+                    <div class="sidebar-item tags">
+                        <ul>
+                            {% for tag in tags %}
+                                <li><a href="{% url 'tag' tag.id %}">{{ tag.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div><!-- End sidebar tags-->
+
+                </div><!-- End sidebar -->
+
+            </div>
+        </div>
+      </div>
+    </section><!-- End Blog Section -->
+
+  </main><!-- End #main -->
+  <br>
+  <br>
+  <br>
+
+  <!-- ======= Footer ======= -->
+
+  <footer id="footer" class="mt-auto fixed-bottom footer-inner-pages" >
+    <div class="container d-md-flex py-3">
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>STARTUP MANAGER</span></strong>.
+                All Rights Reserved
+            </div>
+            <div class="credits">
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-2 pt-md-0">
+            <a href="https://twitter.com/adgpi" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.facebook.com/Indianarmy.adgpi" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://www.instagram.com/abhayy.io" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/abhay3104" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<script src="{% static 'static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '/static/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static '/static/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static '/static/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static '/static/assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static '/static/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

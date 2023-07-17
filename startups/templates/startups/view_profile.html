@@ -1,0 +1,93 @@
+{% extends "profbase.html" %}
+
+{% block content %}
+<style>
+    .container1 {
+        margin-bottom: 70px; /* Adjust the value as needed */
+    }
+    </style>
+<div class="container1">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-14">
+            <div class="card p-4">
+                <h4 class="card-title font-weight-bold text-center">Profile Details</h4>
+                <hr>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Email:</label>
+                            <p>{{ user.email }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Startup Name:</label>
+                            <p>{{ user.username }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Area of Operation:</label>
+                            <p>{{ user.area_of_operation }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">PAN Number:</label>
+                            <p>{{ user.pan_no }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Startup Type:</label>
+                            <p>{{ user.startup_type }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Officer Authorized Name:</label>
+                            <p>{{ user.officer_authorized }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Designation:</label>
+                            <p>{{ user.designation }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Mobile Number:</label>
+                            <p>{{ user.phone }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Service Tax Number:</label>
+                            <p>{{ user.service_tax_no }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">TAN Number:</label>
+                            <p>{{ user.tan_no }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">State:</label>
+                            <p>{{ user.state }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">District:</label>
+                            <p>{{ user.district }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold">Registered Address:</label>
+                            <p>{{ user.registered_address }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="{% url 'profile' %}" class="btn btn-primary">Back to Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    .asteriskField {
+        display: none;
+    }
+</style>
+<style>
+    .form-center {
+        margin-bottom: 100px; /* Adjust the value as needed */
+    }
+</style>
+
+<div class="form-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-lg-14">
+                <div class="card p-4">
+                    <h4 class="card-title font-weight-bold text-center">Grievance Form</h4>
+                    <hr>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            {{ form|crispy }}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

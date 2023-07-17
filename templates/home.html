@@ -1,0 +1,513 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>STARTUP MANAGER</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <style>
+    .message-dialog {
+        position: absolute;
+        left: 30px;
+        top: 90px;
+    }
+  </style>
+
+<link href="/static/assets/img/favicon.png" rel="icon">
+<link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/boxicons/css/boxicons.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/glightbox/css/glightbox.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/remixicon/remixicon.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/vendor/swiper/swiper-bundle.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/static/assets/css/style.css' %}">
+
+</head>
+
+<body>
+
+  <header id="header" class=" fixed-top header-inner-pages ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="{% url 'home' %}">SE PROJECT</a></h1>
+      
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'home' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'blog' %}">Blogs</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'info' %}">Startups</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'grievances' %}">Grievances</a></li>
+          
+
+          {% if user.is_authenticated %}
+            <li><a class="nav-link scrollto" href="{% url 'profile' %}">Profile</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+            <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="{% url 'login' %}">User Login</a></li>
+           
+                <li><a href="{% url 'admin:index' %}">Admin Login</a></li>
+              
+              </ul>
+            </li>
+            <li><a class="nav-link scrollto" href="{% url 'register' %}">Register</a></li>
+          {% endif %}
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+    </div>
+  </header>
+  <section id="hero">
+    <div class="hero-container">
+        <h3>We are <strong class="spacer">THAPARIANS</strong></h3>
+
+      
+      <h2>Turning Coffee to Code and Code to Social Good</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <!-- <h2>We at</h2> -->
+          <h3>STARTUP MANAGER's <span>MISSION IS</span></h3>
+          <p> </p>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <p>
+              How do we help the startups realise the goal :
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i>Zero-Day Zero-Cost StartUp support model</li>
+              <li><i class="ri-check-double-line"></i>Accelerate ideas with a build fast , breakfast idealogy</li>
+              <li><i class="ri-check-double-line"></i>Building economic value within university ecosystem</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              STARTUP MANAGER Vision is to give an accelerated platform to idea-level entrepreneurs and support them with the necessary resources and mentorship to build real value from their current ideas.
+            </p>
+            <a href="#" class="btn-learn-more">Learn More</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <h3>We do offer awesome <span>Services</span></h3>
+          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+        </div>
+
+        <div class="row">
+         
+
+     
+
+
+        </div>
+
+      </div>
+    </section>
+    <section id="features" class="features">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-6 col-6">
+            <div class="icon-box">
+              <i class="ri-store-line" style="color: #ffbb2c;"></i>
+              <h3><a href="">Great Ecosystem</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="icon-box">
+              <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
+              <h3><a href="">Useful resources</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6 mt-4 mt-md-0">
+            <div class="icon-box">
+              <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
+              <h3><a href="">Mentorship</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6 mt-4 mt-lg-0">
+            <div class="icon-box">
+              <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
+              <h3><a href="">Ideation</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6 mt-4">
+            <div class="icon-box">
+              <i class="ri-database-2-line" style="color: #47aeff;"></i>
+              <h3><a href="">Incubation</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6 mt-4">
+            <div class="icon-box">
+              <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
+              <h3><a href="">Acceleration</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6 mt-4">
+            <div class="icon-box">
+              <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
+              <h3><a href="">Investors</a></h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6 mt-4">
+            <div class="icon-box">
+              <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
+              <h3><a href="">Funds</a></h3>
+            </div>
+          </div>
+          
+
+      </div>
+    </section>
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="text-center">
+          <h3>We dont Stop here!</h3>
+          <p> new features</p>
+          <a class="cta-btn" href="#team">Call To Action</a>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>SUCCESS STORIES</h2>
+          <h3>Milestones : <span>StartUp</span></h3>
+          <p>These are some of our StartUps that were launched successfully.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="static/static/assets/img/team-1.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Abhay Singh</h4>
+                <span>Chief Executive Officer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="static/static/assets/img/team-2.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Ashutosh Bajpai</h4>
+                <span>Sales Head</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="static/static/assets/img/team-3.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Jigisha Chopra</h4>
+                <span>Product Manager</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="static/static/assets/img/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Yatin Goyal</h4>
+                <span>Senior Manager</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+   
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>F.A.Q</h2>
+          <h3>Frequently Asked <span>Questions</span></h3>
+        </div>
+
+        <ul class="faq-list">
+
+          <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Do I need to necessarily register my startup? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Is there any criteria for startup screening? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">What benefits are there? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <h3>Contact <span>Us</span></h3>
+          <p>In case of any query Contact Us via : .</p>
+        </div>
+
+        <div>
+          <!--=============EMBED MAPS==============-->
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.8072008410422!2d76.36251251517646!3d30.35642881072152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391028ab86533db5%3A0x93cc1f72eae1c9a8!2sThapar%20Institute%20of%20Engineering%20%26%20Technology%20(TIET)%2C%20Patiala!5e0!3m2!1sen!2sin!4v1669137441563!5m2!1sen!2sin" frameborder="0" allowfullscreen></iframe>
+        </div>
+    <!-- ======= ChatBot Section ======= -->
+        <div class="row mt-5">
+            <script type="text/javascript">
+                (function(d, m){
+                    var kommunicateSettings =
+                        {"appId":"3f322f6cb514f4576a152dd3c79495470","popupWidget":true,"automaticChatOpenOnNavigation":true};
+                    var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+                    s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+                    var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+                    window.kommunicate = m; m._globals = kommunicateSettings;
+                })(document, window.kommunicate || {});
+            /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+            </script>
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Thapar Institute of Engineering and Technology,
+                  Patiala,Punjab 147004</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>abhay12aps@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+91 873 6808 854</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="https://formspree.io/f/mvonelpq" method="POST" role="form" >
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="text-center mt-3"><button type="submit" class="btn btn-outline-primary" >Send Message</button></div>
+            </form>
+
+          </div>
+<!--
+      <div class="col-lg-8 mt-5 mt-lg-0">
+
+        <form action="/send_mail" method="POST" role="form" >
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+          </div>
+          <div class="my-3" >
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center mt-3"><button type="submit" class="btn btn-outline-primary" >Send Message</button></div>
+        </form>
+
+      </div>-->
+
+    </div>
+  </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+  <div class="message-dialog">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="container d-md-flex py-3">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>SE PROJECT</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+        
+         
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-2 pt-md-0">
+        <a href="https://twitter.com/adgpi" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/Indianarmy.adgpi" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/abhayy.io" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/abhay3104" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  
+  <script>
+    window.onbeforeunload = () => {
+  for(const form of document.getElementsByTagName('form')) {
+    form.reset();
+  }
+}
+  </script>
+
+  <script src="{% static 'static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/static/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static '/static/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static '/static/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static '/static/assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static '/static/assets/js/main.js' %}"></script>
+    <script>
+      // Get the message dialog element
+      const messageDialog = document.querySelector('.message-dialog');
+  
+      // Function to hide the message dialog after a specified time (in milliseconds)
+      const hideMessageDialog = () => {
+          messageDialog.style.display = 'none';
+      };
+  
+      // Set the duration (in milliseconds) for the message dialog to be visible
+      const duration = 2000; // 5 seconds
+  
+      // Hide the message dialog after the specified duration
+      setTimeout(hideMessageDialog, duration);
+  </script>
+ 
+</body>
+
+</html>

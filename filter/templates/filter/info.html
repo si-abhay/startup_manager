@@ -1,0 +1,200 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<script>
+    $(document).ready(function() {
+        $('#state').change(function() {
+            var state = $(this).val();
+
+            $.ajax({
+                url: '/get-districts/',
+                data: {
+                    'state': state
+                },
+                dataType: 'json',
+                success: function(data) {
+                    var districts = data.districts;
+                    var options = '<option value="">Select a district</option>';
+                    for (var i = 0; i < districts.length; i++) {
+                        options += '<option value="' + districts[i] + '">' + districts[i] + '</option>';
+                    }
+                    $('#district').html(options);
+                }
+            });
+        });
+
+        $('#remove-filter').click(function() {
+            // Reset the state, district, society type, and registration year dropdowns
+            $('#state').val('');
+            $('#district').val('');
+            $('#startup-type').val('');
+            $('#registration-year').val('');
+
+            // Trigger form submission to remove filters
+            $('form').submit();
+        });
+    });
+</script>
+<style>
+    .container1 {
+        grid-gap: 30px;
+        padding: 20px;
+        display: grid;
+        width: 100%;
+        position:relative;
+    }
+
+    .filter-section {
+        background-color: #fff;
+        padding: 20px;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    }
+    .custom-row {
+        background-color: #fff; 
+    }
+
+    .table-section {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+       
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .btn-remove-filter {
+        margin-top: 10px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 767px) {
+        .container1 {
+            display: grid;
+        }
+
+        .filter-section,
+        .table-section {
+            padding: 10px;
+        }
+
+        table {
+            font-size: 12px;
+        }
+    }
+</style>
+
+<div class="container1">
+    <div class="filter-section">
+        <form method="GET" action="{% url 'info' %}">
+            <div class="row custom-row">
+                <div class="col-md-3 custom-row">
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <select name="state" id="state" class="form-control">
+                            <option value="">Select a state</option>
+                            {% for state in states %}
+                            <option value="{{ state }}">{{ state }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 custom-row">
+                    <div class="form-group">
+                        <label for="district">District:</label>
+                        <select name="district" id="district" class="form-control">
+                            <option value="">Select a district</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 custom-row">
+                    <div class="form-group">
+                        <label for="startup-type">Startup Type:</label>
+                        <select name="startup_type" id="startup-type" class="form-control">
+                            <option value="">Select type</option>
+                            {% for startup_type in startup_types %}
+                            <option value="{{ startup_type }}">{{ startup_type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 custom-row">
+                    <div class="form-group">
+                        <label for="registration-year">Registration Year:</label>
+                        <select name="registration_year" id="registration-year" class="form-control">
+                            <option value="">Select year</option>
+                            {% for year in registration_years %}
+                            <option value="{{ year|date:"Y" }}">{{ year|date:"Y" }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row custom-row">
+                <div class="col-md-3 custom-row">
+                    <button type="submit" class="btn btn-primary btn-remove-filter">Filter</button>
+                </div>
+                <div class="col-md-5 custom-row">
+                    <button id="remove-filter" class="btn btn-danger btn-remove-filter">Remove Filter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="table-section">
+        <h1>Filtered Data:</h1>
+        {% if filter_data %}
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>State</th>
+                        <th>District</th>
+                        <th>Registration Date</th>
+                        <th>Area of Operation</th>
+                        <th>Startup Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in filter_data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ entry.startup_name }}</td>
+                        <td>{{ entry.registered_address }}</td>
+                        <td>{{ entry.state }}</td>
+                        <td>{{ entry.district }}</td>
+                        <td>{{ entry.date_joined|date:"F d, Y" }}</td>
+                        <td>{{ entry.area_of_operation }}</td>
+                        <td>{{ entry.startup_type }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No data available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
