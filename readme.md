@@ -28,6 +28,15 @@ Administrator will be able to assign the roles to users from the admin panel
 
 After being accepted startup will be able to post requests and also be able to pay it's quarterly fee.
 
+### FEATURES LIST
+
+1. Complete Login/Logout System with forgot and reset password
+2. Three step orderly flow of registration process
+3. Payment Gateway
+4. Contact form (live email being sent)
+5. Grievances forms (To submit a complain regarding an existing startup)
+6. Drill down filtering capabilities
+7. Request submission by user (Admin can accept reject the request and provide a feedback why the action is taken)
 ## ⚡ Technologies
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
