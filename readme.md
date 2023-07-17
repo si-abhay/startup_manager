@@ -1,14 +1,13 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)  [![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) 
 [![forthebadge](https://forthebadge.com/images/badges/uses-brains.svg)](https://forthebadge.com)
 
-## the[ hm](https://github.com/cfgmum22/team-26/blob/hm/README.md) branch is the main branch
-#                                           Gujarat University Startup and Enterpreneurship Council(GUSEC)
+#                       StartUp Manager Project (Self Idea)
 
 ### PROBLEM STATEMENT
-GUSEC proposed to develop the Web Application where they can take the online application for startup Enrollment alog with their approval workflow within the system and post approval of startups, the Review meeting Scheduling, Meeting Feedback, CDC Payment by Startup, Additional Service request by startups to be taken online within the system only.
+To develop the Web Application for college authorities, where they can take the online application for startup Enrollment alog with their approval workflow within the system and post approval of startups, Investors can post blogs, Users or visitor can put up a complain, Drilldown approach to get a specific startup details, Quarterly Payment by Startup, Additional Service request by startups to be taken online within the system only.
 
 ### REQUIREMENTS OVERVIEW
-In current scenario, GUSEC is managing complete process manually and all the data related to startups , their team members , review feedback , funds and its very difficult and time consuming to create reports from those collected data.
+In current scenario, Colleges are generally managing complete process manually and all the data related to startups , review feedback , funds and its very difficult and time consuming to create reports from those collected data.
 
 
 🚩1.<b> User Management</b>
@@ -17,27 +16,33 @@ Administrator will be able to create&manage the backend users from the admin pan
 
 🚩2.<b> Roles & Responsibility Management</b>
 
-Administrator will be able to assign the roles to backend users from the admin panel
+Administrator will be able to assign the roles to users from the admin panel
 
 🚩3.<b> Startup Registration & Approval Module</b>
-Startups who wish to enroll themselves with the GUSEC will have to register themselves first. To register within the proposed system they need to follow certain critera.
 
-🚩4.<b> Startup Progress Review Model</b>
-Every startup need to fill the form to showcase the the progress every quarterly in the proposed application
+1. Startups who wish to enroll themselves with the Startup Manager will have to register themselves first along with a brief startup idea. After this step they'll have to wait for admin to validate them on the basis of startup idea.
+
+2. If validated by admin then user is able to fill all the details of the startup in a new form on profile page.
+
+3. After above step startups details will be reviewed again by admin and then it will be accepted or rejected by admin
+
+After being accepted startup will be able to post requests and also be able to pay it's quarterly fee.
 
 ## ⚡ Technologies
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
 ![Python](https://img.shields.io/badge/-Python-black?style=flat-square&logo=Python)
-![React](https://img.shields.io/badge/-React-black?style=flat-square&logo=react)
 ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap)
 ![MySQL](https://img.shields.io/badge/-MySQL-black?style=flat-square&logo=mysql)
-![Amazon AWS](https://img.shields.io/badge/Amazon%20AWS-232F3E?style=flat-square&logo=amazon-aws)
 ![Git](https://img.shields.io/badge/-Git-black?style=flat-square&logo=git)
 ![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github)
+![Render](https://img.shields.io/badge/Render-333333?style=flat-square&logo=render&logoColor=white)
 <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"/>
+<img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white"/>
+<img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"/>
+<img src="https://img.shields.io/badge/Crispy%20Forms-8CC84B?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/>
 <img src="https://img.shields.io/badge/dialogflow-FF9800?style=for-the-badge&logo=dialogflow&logoColor=white"/>
 
@@ -46,23 +51,36 @@ Every startup need to fill the form to showcase the the progress every quarterly
 
 
 ## Sloutions Provided: <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome Badge"/>
-🚩1. We have implemented the User Login and authentication system using the Google API. Where all the details required by by GUSEC have been taken care of. Users will be asked all the questions as mentioned by the GUSEC.
+🚩1. We have complete working Login/Logout Signup system with all working forgot password emails and reset password emails working in real time and actual mails being sent.
 
-🚩2. Once the startup is verified we redirect it to the application homepage where they can find all the necesaary details regarding the further processes. 
+🚩2. Once the startup is verified we redirect it to the profilepage where they can find all the necesarry details regarding the further processes. 
 
-🚩3. As startup mentioned in their session that they provide the guidance manually, so we have implemented a chatbot which will automate the process of taking users query and providind solutions.
+🚩3. As startups user may need guidance, so we have implemented a chatbot which will automate the process of taking users query and providind solutions.
 
-🚩4.One super admin will have all the control of the backend stuff. aWe have used django on the backend, so the password entered by the users will not be visible by the admin, passwords will be hashed. Thats a plus point taking users security and privacy in consideration.
+🚩4.One super admin will have all the control of the backend stuff. We have used django on the backend, so the password entered by the users will not be visible to the admin, passwords will be hashed by SHA-256 Algorithm and also salting will be applied. Thats a plus point taking users security and privacy in consideration.
 
-🚩5. We have also implemented a blog system where GUSEC can mention the important stuffs in the form of blogs so that startups can benefit.
+🚩5. We have also implemented a blog system where users who are investor can mention the important stuffs in the form of blogs so that startups can benefit. 
+1. The blogs can be searched by keywords if that exist in blog title or blog content.
+2. The blogs can also be shown by only of specific tags and category.
+3. The blogs page have Pagination to allow only 4 posts per page.
+4. Also on sidebar a field to show the latest 2 blog posts.
 
-🚩6.We have also implemented the startup dashboard where they can show their quarterly progress. Which will be visible to GUSEC and the investors.
+🚩6.We have also implemented different filters and export in diff formats like excel,csv,pdf etc, to export the list of the fields of database in admin panel with context to applied filters.
+🚩7.There is also a grievance addressal system to allow users to submit their grievances regarding the registered startups on startup manager. Which is stored in database and can be filtered by startup name or other fields. So as to get an idea which startup is not working fine.
 
-🚩7. Startups can also seek help in terms of resources, which after proper verification will be provided by GUSEC. If there are any on going goverment schemes for the startup GUSEC will notify the startups regarding that.
+🚩8.On the website there is a contact us form on homepage at the bottom, when filled by any random site visitor or user it automatically sends a mail to admin email with the data of the form.
+
+🚩9. Startups can also seek help in terms of resources, which after proper verification will be provided by College Authorities, the admin can accept or reject a request and if he/she wants can also add a feedback for accepting or rejecting which is displayed on user profile. If there are any on going goverment schemes for the startup Startup Manager will notify the startups by creating a blog post regarding that.
+
+### FURTHER STEPS
+-To redefine admin panel views using custom views
+-implemented the startup dashboard where they can show their quarterly progress by uploading a csv. Which will be visible to Admin and the investors using charts.
+-To work on single blogpost page view
+-To allow users to be able to comment on blogs
 
 [![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
 
-- [Harshmohan Kulkarni](https://github.com/harshmohan07),  [Dhruv Daftary](https://github.com/dhruvdaftary),  [Ananya Agarwal](https://github.com/ananyaa01),  [Diksha Rai](https://github.com/diksharai9),  [Epshita Charavorty](https://github.com/docilefiasco),  [Anishka](https://github.com/#), [Abhay](#),  [Nikhilesh](https://github.com/nikhilesh-03) 
+- [Abhay](https://github.com/si-abhay), [instagram](https://www.instagram.com/abhayy.io/),  [linkedIn](https://www.linkedin.com/in/abhay3104/) 
 
 
 [![coffee](https://forthebadge.com/images/badges/powered-by-coders-sweat.svg)](https://forthebadge.com)
