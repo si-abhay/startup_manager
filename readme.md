@@ -32,11 +32,17 @@ After being accepted startup will be able to post requests and also be able to p
 
 1. Complete Login/Logout System with forgot and reset password
 2. Three step orderly flow of registration process
-3. Payment Gateway
+3. Payment Gateway( automatc quarterly fee collection)
+3. Onsite working Chatbot integration
 4. Contact form (live email being sent)
 5. Grievances forms (To submit a complain regarding an existing startup)
 6. Drill down filtering capabilities
 7. Request submission by user (Admin can accept reject the request and provide a feedback why the action is taken)
+8. Blog Posts (users who are investor can post blogs)
+9. Pagination (4 blog post per page only)
+10. Blog posts have search bar , allowing keyword to be searched in title or content and return only thos blog posts
+
+
 ## ⚡ Technologies
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
