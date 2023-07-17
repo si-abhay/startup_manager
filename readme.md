@@ -1,6 +1,5 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)  [![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) 
-[![forthebadge](https://forthebadge.com/images/badges/uses-Django-Backend.svg)](https://forthebadge.com)
-
+[![forthebadge](https://forthebadge.com/images/badges/uses-brains.svg)](https://forthebadge.com)
 
 ## the[ hm](https://github.com/cfgmum22/team-26/blob/hm/README.md) branch is the main branch
 #                                           Gujarat University Startup and Enterpreneurship Council(GUSEC)
