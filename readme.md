@@ -3,6 +3,7 @@
 
 #                       StartUp Manager Project (Self Idea)
 
+###https://startup-r1wm.onrender.com/
 ### PROBLEM STATEMENT
 To develop the Web Application for college authorities, where they can take the online application for startup Enrollment alog with their approval workflow within the system and post approval of startups, Investors can post blogs, Users or visitor can put up a complain, Drilldown approach to get a specific startup details, Quarterly Payment by Startup, Additional Service request by startups to be taken online within the system only.
 
